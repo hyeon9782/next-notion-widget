@@ -1,10 +1,10 @@
-import Countdown from '@/components/Countdown'
-import React from 'react'
+import Countdown from "@/components/Countdown";
+import React from "react";
 
 export default function DDayPage() {
   return (
     <section>
-        <Countdown />
+      <Countdown />
     </section>
-  )
+  );
 }
