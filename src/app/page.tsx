@@ -1,4 +1,4 @@
-import Countdown from "@/components/Countdown";
+import Countdown from "@/components/DDay";
 import NotionApiTest from "@/components/NotionApiTest";
 
 export default function Home() {

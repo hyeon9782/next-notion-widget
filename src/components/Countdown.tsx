@@ -1,32 +1,21 @@
-"use client";
-
 import { useState } from "react";
 
 export default function Countdown() {
-  const today = new Date();
+  const [stop, setStop] = useState("");
+  const startTime = Date.now();
+  setInterval(() => {
+    let elapsedTime = Date.now() - startTime;
+    let hours = Math.floor(elapsedTime / 3600000);
+    let minutes = Math.floor((elapsedTime % 3600000) / 60000);
+    let seconds = Math.floor((elapsedTime % 60000) / 1000);
+    let milliseconds = Math.floor(elapsedTime % 1000);
+    let stop = hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+    setStop(stop);
+  }, 1000);
 
-  const [dday, setDDay] = useState("");
-
-  const [title, setTitle] = useState("");
-
-  const handleChange = (e) => {
-    const diff = new Date(e.target.value).getTime() - today.getTime();
-    const days = Math.floor(diff / 86400000);
-    setDDay(days);
-  };
   return (
-    <article className="bg-gray-500 w-11/12 my-0 mx-auto text-center p-4">
-      <form className="">
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        <input type="date" onChange={handleChange} />
-      </form>
-      <div className="font-bold text-3xl">{title}</div>
-      <div className="font-bold text-3xl">{dday && `D - ${dday}`}</div>
+    <article className="flex font-bold text-3xl">
+      <div>{stop}</div>
     </article>
   );
 }
